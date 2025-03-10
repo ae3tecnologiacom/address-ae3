@@ -1,0 +1,27 @@
+{
+    "name": "address/address-api",
+    "description": "library to consume address queries ",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Paiva\\address\\Providers\\AddressServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Paiva",
+            "email": "lucaspaivadev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Paiva\\address\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
