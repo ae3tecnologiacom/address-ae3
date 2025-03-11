@@ -22,6 +22,7 @@ class ListCitiesService
     public function listCities(): mixed
     {
         try {
+            dd($this->baseUri);
             $response = Http::withToken($this->accessToken)
                 ->get("{$this->baseUri}/api/v1/address/cities");
 
