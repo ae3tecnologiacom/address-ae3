@@ -5,7 +5,7 @@ namespace Paiva\address\app\Services;
 use Exception;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
-use PSpell\Config;
+use Illuminate\Support\Facades\Config;
 
 class AuthenticateService
 {
@@ -21,11 +21,11 @@ class AuthenticateService
      */
     public function __construct()
     {
-        $this->authenticate();
         $this->baseUri = Config::get('address.server.uri');
         $this->grantType = Config::get('address.server.grant_type');
         $this->clientId = Config::get('address.server.client_id');
         $this->clientSecret = Config::get('address.server.client_secret');
+        $this->authenticate();
     }
 
     /**
@@ -47,6 +47,9 @@ class AuthenticateService
         }
     }
 
+    /**
+     * @return string
+     */
     public function getAccessToken(): string
     {
         return $this->accessToken;
