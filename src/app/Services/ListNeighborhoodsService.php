@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\Http;
 class ListNeighborhoodsService
 {
     private string $accessToken;
+    private string $baseUri;
+
 
     public function __construct(private readonly AuthenticateService $authenticateService)
     {
         $this->accessToken = $this->authenticateService->getAccessToken();
+        $this->baseUri = Config::get('address.server.uri');
+
     }
 
     /**
@@ -20,7 +24,7 @@ class ListNeighborhoodsService
     {
         try {
             $response = Http::withToken($this->accessToken)
-                ->get("http://host.docker.internal:8090/api/v1/address/neighborhoods");
+                ->get("{$this->baseUri}/api/v1/address/neighborhoods");
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $exception) {
@@ -32,7 +36,7 @@ class ListNeighborhoodsService
     {
         try {
             $response = Http::withToken($this->accessToken)
-                ->get("http://host.docker.internal:8090/api/v1/address/neighborhoods/{$city_id}");
+                ->get("{$this->baseUri}/api/v1/address/neighborhoods/{$city_id}");
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $exception) {
