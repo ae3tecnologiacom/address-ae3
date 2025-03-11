@@ -35,7 +35,7 @@ class ListStatesService
     {
         try {
             $response = Http::withToken($this->accessToken)
-                ->get("{$this->baseUri}/api/v1/address/countries/22/states");
+                ->get("{$this->baseUri}/api/v1/address/countries/{$country_id}/states");
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $exception) {
