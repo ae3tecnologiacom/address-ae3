@@ -6,7 +6,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Paiva\\address\\App\\Providers\\AddressServiceProvider"
+                "Paiva\\address\\app\\Providers\\AddressServiceProvider"
             ]
         }
     },
